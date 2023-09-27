@@ -1,0 +1,32 @@
+---
+output: html_document
+---
+
+<!-- The following script makes it possible to use the mhchem -->
+<!-- latex package in a .Rmd file and to knit it into an .html file -->
+
+```{=html}
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+    extensions: ["[Contrib]/mhchem/mhchem.js"]
+}
+});
+</script>
+```
+
+<!-- place activity 1 here -->
+
+It isn't practical to measure the response for every combination of factor levels. Instead, we measure the response for a small set of factor levels and use linear regression to fit the data to a suitable equation, such as a full second-order polynomial model. The figure on the right uses 12 sets of factor levels to model the response surface. The points are divided into two groups: a set of four points in a rectangle (shown in green), and five points in a star pattern (shown in maroon). Each point's response is adjacent to the point; the central point is measured four times. The data is taken from a spot test for vanadium in which the dropwise addition of 1% H~2~O~2~ and 20% H~2~SO~4~ to 40 drops of a stock solution of VOSO~4~ (approximately 0.1 g/250 mL water) forms a red-brown solution that absorbs at 460 nm after a five-minute reaction time. *Note: The sliders for rotating and tilting the response surface are not used when displaying the experimental design.*
+
+**Exercise 1**. The points on the rectangle are insufficient to model curvature. Why is this and why do the star points make it possible to model curvature?
+
+**Exercise 2**. Looking at the reported responses, is there evidence of an interaction between the drops of H~2~O~2~ and the drops of H~2~SO~4~?
+
+**Exercise 3**. Looking at the reported response values, which of the two factors, H~2~O~2~ and H~2~SO~4~, has the greater affect on the absorbance?
+
+**Exercise 4**. Use the radio button to display the response surface along with the responses from the experimental design. Are your answers to second and third exercises consistent with the response surface?
+
+**Exercise 5**. Given the response surface, what combination of factor levels provides the greatest response? Why is this surprising and unlikely to be true?
+
+**Exercise 6**. Return to the experimental design and calculate the 95% confidence interval for the four experiments in the center of the experimental design. What is the significance of this result?

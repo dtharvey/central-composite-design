@@ -1,0 +1,59 @@
+---
+output: html_document
+---
+
+<!-- The following script makes it possible to use the mhchem -->
+<!-- latex package in a .Rmd file and to knit it into an .html file -->
+
+```{=html}
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+    extensions: ["[Contrib]/mhchem/mhchem.js"]
+}
+});
+</script>
+```
+
+<!-- place wrapping up here -->
+
+#### Data Used in this Module
+
+The equations for the response surfaces in the introduction, and the data and response surface in the second activity are taken from ["Central Composite Experimental Designs," J. A. Palasota, S. N. Deming, *J. Chem. Educ* **1992**, *69*, 560--563](https://doi.org/10.1021/ed069p560).
+
+#### Linear Regression
+
+The response surface for the vanadium spot test is derived using a linear regression to fit a full second-order polynomial equation to the measured absorbances at the 12 pairs of factor levels for H~2~O~2~ and H~2~SO~4~. The `R` code to accomplish this is shown below along with a summary of the linear regression results. With the exception of the second-order term for the drops of sulfuric acid, all other coefficients are significant at $\alpha = 0.05$.
+
+```{r, echo=TRUE}
+peroxide = c(20,20,10,10,15,22,8,15,15,15,15,15)
+sulfuric = c(20,10,20,10,15,15,15,22,8,15,15,15)
+absorbance = c(330,293,359,420,334,327,397,319,367,336,346,323)/1000
+lm.r = lm(absorbance ~ peroxide * sulfuric + I(peroxide^2) + I(sulfuric^2))
+summary(lm.r)
+```
+
+Using the coefficients, we can predict the absorbance for each of the 12 pairs of factor levels for H~2~O~2~ and H~2~SO~4~, the difference between each prediction and the experimental value, and the average absolute difference without paying attention to sign.
+
+```{r, echo=TRUE}
+predicted_absorbance = predict(lm.r, newdata = data.frame(peroxide,sulfuric))
+predicted_absorbance
+delta_absorbance = absorbance - predicted_absorbance
+delta_absorbance
+mean(abs(delta_absorbance))
+```
+
+The average difference of `r round(mean(abs(delta_absorbance)),4)` is small relative to each of the individual responses, suggesting that the model does a good job of explanining the experimental data.
+
+#### Other Visualizations of the Response Surface
+
+It is easy to view a three-dimensional object when you can hold it in your hands and freely rotate it in space. Viewing the same three-dimensional object on a two-dimensional plane is challenging even when we have controls available for rotating the object around the *z*-axis and for tilting the object's *z*-axis. Another approach for visualizing the response surface is to use a contour plot, as shown by the figure on the right. The 12 pairs of factor levels for H~2~O~2~ and H~2~SO~4~ are superimposed on the contour plot.
+
+#### Additional Resources
+
+For an introduction to response surfaces and the mathematical modeling of response surfaces, see Chapter 14 in [Analytical Chemistry 2.1](https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Analytical_Chemistry_2.1_(Harvey)/14%3A_Developing_a_Standard_Method/14.01%3A_Optimizing_the_Experimental_Procedure) and Chapter 9 in [Chemometics Using R](https://chem.libretexts.org/Bookshelves/Analytical_Chemistry/Chemometrics_Using_R_(Harvey)/09%3A_Gathering_Data).
+
+
+
+
+

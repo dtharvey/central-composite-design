@@ -1,0 +1,36 @@
+---
+output: html_document
+---
+
+<!-- The following script makes it possible to use the mhchem -->
+<!-- latex package in a .Rmd file and to knit it into an .html file -->
+
+```{=html}
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+    extensions: ["[Contrib]/mhchem/mhchem.js"]
+}
+});
+</script>
+```
+
+<!-- place activity 1 here -->
+
+The figure on the right is a response surface described by a second-order polynomial model whose $\beta$ terms are set using the sliders on the upper right.
+
+$$z_i = \beta_0 + \beta_1 x_i + \beta_2 y_i + \beta_{11} (x_i)^2 + \beta_{22} (y_i)^2 + \beta_{12} x_i y_i + r_i$$
+
+The color of the response surface's facets gives the response for a particular pair of factor levels. The scale to the right of the response surface shows the relationship between color and response. 
+
+**Exercise 1**. You can change the orientation of the response surface using the sliders labeled `rotate the xy plane` and `tilt z axis`. Play with these controls until you feel comfortable using them. When you are done, reset the rotation to 45 and the tilt to 35.
+
+**Exercise 2**. Holding all other values of $\beta$ constant, predict how a change in $\beta_0$ will affect the shape and/or position of the response surface. Use the controls to evaluate your prediction.
+
+**Exercise 3**. Holding all other values of $\beta$ constant, predict how a change in the signs for $\beta_1$ and $\beta_2$ will affect the shape and/or position of the response surface. Use the controls to evaluate your prediction.
+
+**Exercise 4**. Holding all other values of $\beta$ constant, predict how assigning a value of 0 to $\beta_{11}$ and $\beta_{22}$ will affect the shape and/or position of the response surface. Use the controls to evaluate your prediction.
+
+**Exercise 5**. Holding all other values of $\beta$ constant, predict how assigning a value of 0 to $\beta_1$ and to $\beta_2$ will affect the shape and/or position of the response surface. Use the controls to evaluate your prediction.
+
+**Exercise 6**. Holding $\beta_{12}$ constant, predict how assigning a value of 0 to $\beta_1$, $\beta_2$, $\beta_{11}$, and $\beta_{22}$ will affect the shape and/or position of the response surface. How does changing the sign of $\beta_{12}$ affect the shape and/or position of the response surface? Use the controls to evaluate your prediction. *Note: When $\beta_1 = \beta_2 = \beta_{11} = \beta_{22} = \beta_{12} = 0$, the response surface will not display due to a limitation in the function used to draw the response surface.*
