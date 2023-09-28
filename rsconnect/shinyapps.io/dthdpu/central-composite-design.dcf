@@ -1,0 +1,13 @@
+name: central-composite-design
+title: central-composite-design
+username: dthdpu
+account: dthdpu
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 10019262
+bundleId: 7738612
+url: https://dthdpu.shinyapps.io/central-composite-design/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: persp_code.R|test_code_1.R|test_code.R|test2.R
